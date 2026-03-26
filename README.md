@@ -95,6 +95,24 @@
 </div>
 <br>
 
+<!--GAME CONSOLE-->
+<h1 align="center">🕹️ Developer Console</h1>
+<p align="center">
+  <img src="https://capsule-render.vercel.app/api?type=rect&color=0D1117&height=80&section=header&text=System%20Status:%20Online&fontSize=25&animation=fadeIn&fontColor=7F3FBF" />
+</p>
+
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/49257007/116918804-097da400-ac25-11eb-980b-4bd07a7a2a0d.gif" width="100%" alt="Chrome Dino Running" />
+</p>
+
+<p align="center">
+<b>PLAYER:</b> MUBASHIR_ALI | <b>LEVEL:</b> TOP_COMMITTER | <b>REGION:</b> PAKISTAN 🇵🇰
+</p>
+<p align="center">
+<i>"Hunting for genomic sequences... [Press Space to Jump]"</i>
+</p>
+<br>
+
 <!--SOCIAL ACCOUNTS-->
 
 <h1 align="center">Accounts</h1>
@@ -152,10 +170,8 @@
 <h1 align="center">Open Source</h1-->
 
 
-<!--CONFIG FILE-
-<h1 align="center">Config Files</h1>
-
-[![Mubashir Readme](https://github-readme-stats.vercel.app/api/pin/?username=mubashir1837&repo=mubashir1837&border_color=7F3FBF&bg_color=0D1117&title_color=C9D1D9&text_color=8B949E&icon_color=7F3FBF)](https://github.com/mubashir1837) -->
+<!--CONFIG FILES-->
+<h1 align="center">⚙️ Configuration</h1>
 <p align="center">
   <a href="https://github.com/mubashir1837?tab=repositories" target="_blank"><img alt="All Repositories" title="All Repositories" src="https://img.shields.io/badge/-All%20Repos-2962FF?style=for-the-badge&logo=koding&logoColor=white"/></a>
 </p>
