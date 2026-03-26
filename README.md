@@ -12,6 +12,10 @@
 
 ![Bottom_up](https://github.com/user-attachments/assets/4da6977a-113b-4fab-b853-eb496dd8cedd)<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="z-index:1;position:relative" width="854" height="200" viewBox="0 0 854 200">
 
+<p align="right">
+  <img src="https://komarev.com/ghpvc/?username=mubashir1837&color=blueviolet&style=flat-square" alt="Visitor Count" />
+</p>
+
 
 <!--ABOUT-->
 <p align="center">
@@ -181,6 +185,18 @@
 </a>
 
 ![Mubashir's Graph](https://github-readme-activity-graph.vercel.app/graph?username=mubashir1837&custom_title=Mubashir%20Ali's%20GitHub%20Activity%20Graph&bg_color=0D1117&color=7F3FBF&line=7F3FBF&point=7F3FBF&area_color=FFFFFF&title_color=FFFFFF&area=true)
+
+<h1 align="center">🏆 GitHub Trophies</h1>
+<p align="center">
+  <a href="https://github.com/ryo-ma/github-profile-trophy">
+    <img src="https://github-profile-trophy.vercel.app/?username=mubashir1837&theme=radical&no-frame=true&margin-w=15&margin-h=15" alt="Mubashir's GitHub Trophies" />
+  </a>
+</p>
+
+<h1 align="center">🧊 3D Contributions</h1>
+<p align="center">
+  <img src="https://github-profile-3d-contrib.vercel.app/api?username=mubashir1837&theme=radical" alt="Mubashir's 3D Contributions" />
+</p>
 
 
 
