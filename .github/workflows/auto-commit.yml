@@ -36,7 +36,7 @@ jobs:
         run: |
           echo "Fetching website..."
 
-          HTML=$(curl -s https://mubashirali.vercel.app/)
+          HTML=$(curl -sL -A "Mozilla/5.0" https://mubashirali.vercel.app/)
 
           # Remove scripts/styles + tags
           TEXT=$(echo "$HTML" | sed 's/<script[^>]*>.*<\/script>//g' | sed 's/<style[^>]*>.*<\/style>//g' | sed 's/<[^>]*>/ /g')
@@ -45,7 +45,7 @@ jobs:
           TEXT=$(echo "$TEXT" | tr -s ' ')
 
           # Pick meaningful sentence
-          SENTENCE=$(echo "$TEXT" | tr '.' '\n' | grep -E '.{30,}' | shuf -n 1)
+          SENTENCE=$(echo "$TEXT" | tr '.' '\n' | grep -E '.{30,}' | shuf -n 1 || true)
 
           # Clean final output
           CLEAN=$(echo "$SENTENCE" | sed 's/^ *//;s/ *$//' | cut -c1-160)
@@ -68,4 +68,6 @@ jobs:
 
           git diff --cached --quiet || git commit -m "AI Scraper update from website"
 
+          # Pull latest changes first just in case there were parallel commits
+          git pull --rebase origin HEAD || true
           git push origin HEAD
