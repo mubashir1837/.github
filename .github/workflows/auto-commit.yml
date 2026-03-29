@@ -2,7 +2,7 @@ name: Mubashir AI Smart Activity Bot
 
 on:
   schedule:
-    - cron: "0 */2 * * *"   # every 2 hours
+    - cron: "0 */2 * * *"
   workflow_dispatch:
 
 permissions:
@@ -14,56 +14,58 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
-      - name: Install dependencies
+      - name: Install tools
         run: |
           sudo apt-get update
           sudo apt-get install -y curl
 
-      - name: Initialize commits.md if not exists
+      - name: Create commits.md if not exists
         run: |
           if [ ! -f commits.md ]; then
-            echo "# Service Activity Log (inside .github)" >> commits.md
+            echo "# Mubashir AI Activity Log" > commits.md
             echo "" >> commits.md
-            echo "This file is automatically updated using data from mubashirali.vercel.app to reflect ongoing AI, ML, and Data Science work." >> commits.md
-            echo "" >> commits.md
-            echo "---" >> commits.md
-            echo "" >> commits.md
-            echo "## Activity Log" >> commits.md
+            echo "Auto-generated from mubashirali.vercel.app scraping." >> commits.md
             echo "" >> commits.md
           fi
 
       - name: Scrape website content
         run: |
-          curl -s https://mubashirali.vercel.app/ > page.html
+          echo "Fetching website..."
 
-          # Remove HTML tags safely
-          CONTENT=$(sed 's/<[^>]*>/ /g' page.html | tr -s ' ')
+          HTML=$(curl -s https://mubashirali.vercel.app/)
 
-          # Split into sentences and pick random
-          SENTENCE=$(echo "$CONTENT" | tr '.' '\n' | shuf -n 1)
+          # Remove scripts/styles + tags
+          TEXT=$(echo "$HTML" | sed 's/<script[^>]*>.*<\/script>//g' | sed 's/<style[^>]*>.*<\/style>//g' | sed 's/<[^>]*>/ /g')
 
-          # Clean + limit length
-          CLEAN=$(echo "$SENTENCE" | sed 's/^ *//;s/ *$//' | cut -c1-150)
+          # Normalize spaces
+          TEXT=$(echo "$TEXT" | tr -s ' ')
 
-          # Fallback if empty
+          # Pick meaningful sentence
+          SENTENCE=$(echo "$TEXT" | tr '.' '\n' | grep -E '.{30,}' | shuf -n 1)
+
+          # Clean final output
+          CLEAN=$(echo "$SENTENCE" | sed 's/^ *//;s/ *$//' | cut -c1-160)
+
+          # fallback if empty
           if [ -z "$CLEAN" ]; then
-            CLEAN="Mubashir Ali is actively building AI, Machine Learning, and Data Science solutions."
+            CLEAN="Mubashir Ali is actively working on AI, ML and Data Science projects."
           fi
 
           echo "### $(date '+%Y-%m-%d %H:%M:%S')" >> commits.md
           echo "- $CLEAN" >> commits.md
           echo "" >> commits.md
 
-      - name: Commit and push changes
+      - name: Commit and push
         run: |
-          git config --global user.name "Mubashir Ali"
-          git config --global user.email "mubashir@users.noreply.github.com"
+          git config user.name "Mubashir Ali"
+          git config user.email "mubashir@users.noreply.github.com"
 
           git add commits.md
 
-          # Commit only if changes exist
-          git diff --cached --quiet || git commit -m "Auto update from website content"
+          git diff --cached --quiet || git commit -m "AI Scraper update from website"
 
-          git push
+          git push origin HEAD
