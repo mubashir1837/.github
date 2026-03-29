@@ -4,3 +4,6 @@
 ### 2026-03-29 10:43:38
 - "Mubashir Ali Bioinformatician",
 
+### 2026-03-29 13:12:53
+- Driven by curiosity and a commitment to continuous learning, I am passionate about bridging the gap between biology and technology
+
