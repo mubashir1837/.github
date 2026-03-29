@@ -1,0 +1,29 @@
+name: Mubashir AI Smart Activity Bot
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 */2 * * *"
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Create test file
+        run: echo "Mubashir AI Bot is active at $(date)" >> commits.md
+
+      - name: Commit changes
+        run: |
+          git config --global user.name "Mubashir Ali"
+          git config --global user.email "mubashir@users.noreply.github.com"
+
+          git add commits.md
+          git commit -m "AI Bot update" || echo "No changes"
+          git push
